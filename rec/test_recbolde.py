@@ -1,14 +1,23 @@
 from logging import getLogger
+
+import torch
 from recbole.config import Config
 from recbole.data import create_dataset, data_preparation
-from recbole.model.general_recommender import BPR
+from recbole.model.context_aware_recommender import DeepFM
+from recbole.model.general_recommender import BPR, NeuMF
 from recbole.trainer import Trainer
 from recbole.utils import init_seed, init_logger, get_model, get_trainer
+
+
+from torchviz import make_dot
+
+from pizataya_model import PizModel
 
 if __name__ == '__main__':
 
     # configurations initialization
-    config = Config(model='BPR', dataset='ml-100k')
+    config = Config(model=NeuMF, dataset='ml-100k')
+    print(config["device"])
 
     # init random seed
     init_seed(config['seed'], config['reproducibility'])
@@ -28,10 +37,10 @@ if __name__ == '__main__':
     train_data, valid_data, test_data = data_preparation(config, dataset)
 
     # model loading and initialization
-    model = BPR(config, train_data.dataset).to(config['device'])
+    model = NeuMF(config, train_data.dataset).to(config['device'])
     logger.info(model)
 
-    # trainer loading and initialization
+
     trainer = Trainer(config, model)
 
     # model training
@@ -40,3 +49,9 @@ if __name__ == '__main__':
     # model evaluation
     test_result = trainer.evaluate(test_data)
     print(test_result)
+    model.forward(1,2)
+
+
+
+
+

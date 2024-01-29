@@ -1,16 +1,14 @@
-# This is a sample Python script.
+from recbole.config import Config
+from recbole.data import create_dataset, data_preparation
+from torchviz import make_dot
 
-# Press ⌃R to execute it or replace it with your code.
-# Press Double ⇧ to search everywhere for classes, files, tool windows, actions, and settings.
-
-
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press ⌘F8 to toggle the breakpoint.
+from rec.pizataya_model import PizModel
 
 
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
+config = Config(model=PizModel, dataset='ml-100k')
+dataset = create_dataset(config)
+train_data, valid_data, test_data = data_preparation(config, dataset)
 
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+model = PizModel(config, train_data)
+y = model(train_data)
+make_dot(y.mean(), params=dict(model.named_parameters()))
