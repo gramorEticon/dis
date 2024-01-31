@@ -16,7 +16,7 @@ if __name__ == '__main__':
   #      'epochs':1
     }
     # configurations initialization
-    config = Config(model='NeuMF', dataset='ml-1m', config_dict=parameter_dict)
+    config = Config(model='LightGCN', dataset='ml-1m', config_dict=parameter_dict)
 
 
     # init random seed
@@ -37,7 +37,7 @@ if __name__ == '__main__':
     train_data, valid_data, test_data = data_preparation(config, dataset)
 
     # model loading and initialization
-    model = NeuMF(config, train_data.dataset).to(config['device'])
+    model = LightGCN(config, train_data.dataset).to(config['device'])
     logger.info(model)
 
     # trainer loading and initialization
