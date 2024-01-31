@@ -5,17 +5,18 @@ from memory_profiler import profile
 from recbole.config import Config
 from recbole.data import create_dataset, data_preparation
 from recbole.model.general_recommender import BPR, LINE, NeuMF, ConvNCF, DMF, ItemKNN, NAIS, SpectralCF, GCMC, LightGCN, \
-    DGCF, MultiVAE
+    DGCF, MultiVAE, MacridVAE, CDAE, RaCT, RecVAE, EASE, SLIMElastic, NCL, DiffRec
 from recbole.trainer import Trainer
 from recbole.utils import init_seed, init_logger
 import copy
 
 if __name__ == '__main__':
     parameter_dict = {
-        'metrics': ['Recall', 'Precision', 'GAUC', 'MRR', 'NDCG', 'Hit', 'MAP',  'AveragePopularity', 'GiniIndex', 'ShannonEntropy']
+        'metrics': ['Recall', 'Precision', 'GAUC', 'MRR', 'NDCG', 'Hit', 'MAP',  'AveragePopularity', 'GiniIndex', 'ShannonEntropy'],
+  #      'epochs':1
     }
     # configurations initialization
-    config = Config(model='MultiVAE', dataset='ml-100k', config_dict=parameter_dict)
+    config = Config(model='NeuMF', dataset='ml-1m', config_dict=parameter_dict)
 
 
     # init random seed
@@ -36,7 +37,7 @@ if __name__ == '__main__':
     train_data, valid_data, test_data = data_preparation(config, dataset)
 
     # model loading and initialization
-    model = MultiVAE(config, train_data.dataset).to(config['device'])
+    model = NeuMF(config, train_data.dataset).to(config['device'])
     logger.info(model)
 
     # trainer loading and initialization
@@ -57,3 +58,4 @@ if __name__ == '__main__':
     foo()
 
     print(test_result)
+
