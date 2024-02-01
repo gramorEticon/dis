@@ -13,10 +13,10 @@ import copy
 if __name__ == '__main__':
     parameter_dict = {
         'metrics': ['Recall', 'Precision', 'GAUC', 'MRR', 'NDCG', 'Hit', 'MAP',  'AveragePopularity', 'GiniIndex', 'ShannonEntropy'],
-  #      'epochs':1
+        'epochs':1
     }
     # configurations initialization
-    config = Config(model='LightGCN', dataset='ml-1m', config_dict=parameter_dict)
+    config = Config(model='SLIMElastic', dataset='ml-1m', config_dict=parameter_dict)
 
 
     # init random seed
@@ -37,7 +37,7 @@ if __name__ == '__main__':
     train_data, valid_data, test_data = data_preparation(config, dataset)
 
     # model loading and initialization
-    model = LightGCN(config, train_data.dataset).to(config['device'])
+    model = SLIMElastic(config, train_data.dataset).to(config['device'])
     logger.info(model)
 
     # trainer loading and initialization

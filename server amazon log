@@ -55,7 +55,7 @@ Fit ->  97.48110628128052 Predict ->  9.60559868812561
 OrderedDict([('recall@10', 0.2118), ('precision@10', 0.0212), ('gauc', 0.7857), ('mrr@10', 0.0934), ('ndcg@10', 0.1213), ('hit@10', 0.2118), ('map@10', 0.0934), ('averagepopularity@10', 2884.8996), ('giniindex@10', 0.9933), ('shannonentropy@10', 0.1631)])
 
 =============== RaCT ===============
-Fit ->  383.23775482177734 Predict ->  11.179698944091797
+Fit ->  383.23775482177734 Predict ->  11.1796989440917971
     35   1514.7 MiB   1514.7 MiB           1           @profile
     36                                                 def foo():
     37   1514.7 MiB      0.0 MiB           1               a = copy.deepcopy(model)
@@ -90,8 +90,97 @@ OrderedDict([('recall@10', 0.1719), ('precision@10', 0.0172), ('gauc', 0.7414), 
 
 
 1 million
+
+LightGCN
 -------------------------------
 recall@10 : 0.1545    precision@10 : 0.1664    gauc : 0.9239    mrr@10 : 0.39    ndcg@10 : 0.214    hit@10 : 0.7425    map@10 : 0.1119    averagepopularity@10 : 1136.0864    giniindex@10 : 0.8893    shannonentropy@10 : 0.0037
 600мб
 2.8154
 5217.2345
+
+
+MultiVae
+Fit ->  409.6699860095978 Predict ->  4.714817047119141
+Filename: /Users/romankulshin/PycharmProjects/dis/rec/test.py
+
+Line #    Mem usage    Increment  Occurrences   Line Contents
+=============================================================
+    55   1019.1 MiB   1019.1 MiB           1       @profile
+    56                                             def foo():
+    57   1095.3 MiB     76.2 MiB           1           a = copy.deepcopy(model)
+
+
+OrderedDict([('recall@10', 0.1791), ('precision@10', 0.2003), ('gauc', 0.9241), ('mrr@10', 0.4473), ('ndcg@10', 0.2602), ('hit@10', 0.7694), ('map@10', 0.1512), ('averagepopularity@10', 1137.5969), ('giniindex@10', 0.8758), ('shannonentropy@10', 0.0034)])
+
+
+01 Feb 10:40    INFO  Loading model structure and parameters from saved/CDAE-Feb-01-2024_10-32-19.pth
+Fit ->  517.6489160060883 Predict ->  3.051703929901123
+Filename: /Users/romankulshin/PycharmProjects/dis/rec/test.py
+
+Line #    Mem usage    Increment  Occurrences   Line Contents
+=============================================================
+    55   1215.4 MiB   1215.4 MiB           1       @profile
+    56                                             def foo():
+    57   1258.1 MiB     42.7 MiB           1           a = copy.deepcopy(model)
+
+
+OrderedDict([('recall@10', 0.1474), ('precision@10', 0.1922), ('gauc', 0.9124), ('mrr@10', 0.4354), ('ndcg@10', 0.2432), ('hit@10', 0.7101), ('map@10', 0.1431), ('averagepopularity@10', 1511.7335), ('giniindex@10', 0.9536), ('shannonentropy@10', 0.0055)])
+
+
+
+01 Feb 11:02    INFO  Loading model structure and parameters from saved/RaCT-Feb-01-2024_10-53-42.pth
+Fit ->  556.0438618659973 Predict ->  4.9148571491241455
+Filename: /Users/romankulshin/PycharmProjects/dis/rec/test.py
+
+Line #    Mem usage    Increment  Occurrences   Line Contents
+=============================================================
+    55   1122.5 MiB   1122.5 MiB           1       @profile
+    56                                             def foo():
+    57   1188.0 MiB     65.5 MiB           1           a = copy.deepcopy(model)
+
+
+OrderedDict([('recall@10', 0.175), ('precision@10', 0.1955), ('gauc', 0.9236), ('mrr@10', 0.433), ('ndcg@10', 0.2523), ('hit@10', 0.7627), ('map@10', 0.1449), ('averagepopularity@10', 1128.3388), ('giniindex@10', 0.8746), ('shannonentropy@10', 0.0033)])
+
+
+01 Feb 11:14    INFO  Loading model structure and parameters from saved/DiffRec-Feb-01-2024_11-06-09.pth
+Fit ->  500.80884194374084 Predict ->  7.739053964614868
+Filename: /Users/romankulshin/PycharmProjects/dis/rec/test.py
+
+Line #    Mem usage    Increment  Occurrences   Line Contents
+=============================================================
+    55    797.2 MiB    797.2 MiB           1       @profile
+    56                                             def foo():
+    57    915.1 MiB    117.8 MiB           1           a = copy.deepcopy(model)
+
+
+OrderedDict([('recall@10', 0.2001), ('precision@10', 0.2318), ('gauc', 0.9167), ('mrr@10', 0.5107), ('ndcg@10', 0.3032), ('hit@10', 0.806), ('map@10', 0.1858), ('averagepopularity@10', 1277.6237), ('giniindex@10', 0.9218), ('shannonentropy@10', 0.0053)])
+
+
+
+ItemKNN
+Fit ->  9.702240943908691 Predict ->  4.582769155502319
+Filename: /Users/romankulshin/PycharmProjects/dis/rec/test.py
+
+Line #    Mem usage    Increment  Occurrences   Line Contents
+=============================================================
+    55   1739.1 MiB   1739.1 MiB           1       @profile
+    56                                             def foo():
+    57   1846.3 MiB    107.2 MiB           1           a = copy.deepcopy(model)
+
+
+OrderedDict([('recall@10', 0.1634), ('precision@10', 0.1986), ('gauc', 0.9169), ('mrr@10', 0.4467), ('ndcg@10', 0.2563), ('hit@10', 0.7424), ('map@10', 0.1524), ('averagepopularity@10', 1201.2394), ('giniindex@10', 0.9176), ('shannonentropy@10', 0.0045)])
+
+
+
+Slimelastic
+Fit ->  6.819368839263916 Predict ->  5.3793230056762695
+Filename: /Users/romankulshin/PycharmProjects/dis/rec/test.py
+
+Line #    Mem usage    Increment  Occurrences   Line Contents
+=============================================================
+    55    916.7 MiB    916.7 MiB           1       @profile
+    56                                             def foo():
+    57    922.5 MiB      5.8 MiB           1           a = copy.deepcopy(model)
+
+
+OrderedDict([('recall@10', 0.1925), ('precision@10', 0.2254), ('gauc', 0.9085), ('mrr@10', 0.5027), ('ndcg@10', 0.2958), ('hit@10', 0.7907), ('map@10', 0.182), ('averagepopularity@10', 1421.5015), ('giniindex@10', 0.9505), ('shannonentropy@10', 0.0068)])
