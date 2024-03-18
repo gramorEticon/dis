@@ -16,7 +16,7 @@ if __name__ == '__main__':
         'epochs':1
     }
     # configurations initialization
-    config = Config(model='SLIMElastic', dataset='ml-1m', config_dict=parameter_dict)
+    config = Config(model='SLIMElastic', dataset='ml-100k', config_dict=parameter_dict)
 
 
     # init random seed
@@ -51,6 +51,8 @@ if __name__ == '__main__':
     test_result = trainer.evaluate(test_data)
     t_e = time.time()
     print("Fit -> ", t_f-t_s, "Predict -> ", t_e-t_f)
+
+    model.predict([[1],[1,3]])
 
     @profile
     def foo():
