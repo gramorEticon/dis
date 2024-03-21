@@ -1,0 +1,186 @@
+=============== BPR ===============
+Fit ->  52.54918146133423 Predict ->  8.341675043106079
+    35    734.4 MiB    734.4 MiB           1           @profile
+    36                                                 def foo():
+    37    764.3 MiB     29.9 MiB           1               a = copy.deepcopy(model)
+OrderedDict([('recall@10', 0.0762), ('precision@10', 0.0076), ('gauc', 0.5496), ('mrr@10', 0.0281), ('ndcg@10', 0.0392), ('hit@10', 0.0762), ('map@10', 0.0281), ('averagepopularity@10', 796.2073), ('giniindex@10', 0.898), ('shannonentropy@10', 0.0115)])
+
+=============== LINE ===============
+Fit ->  90.2580578327179 Predict ->  8.24640154838562
+    35   1099.6 MiB   1099.6 MiB           1           @profile
+    36                                                 def foo():
+    37   1169.5 MiB     69.8 MiB           1               a = copy.deepcopy(model)
+OrderedDict([('recall@10', 0.0671), ('precision@10', 0.0067), ('gauc', 0.5046), ('mrr@10', 0.0255), ('ndcg@10', 0.0351), ('hit@10', 0.0672), ('map@10', 0.0255), ('averagepopularity@10', 755.3017), ('giniindex@10', 0.8883), ('shannonentropy@10', 0.0091)])
+
+=============== NeuMF ===============
+Fit ->  128.76104521751404 Predict ->  13.83952522277832
+    35   1156.8 MiB   1156.8 MiB           1           @profile
+    36                                                 def foo():
+    37   1186.5 MiB     29.6 MiB           1               a = copy.deepcopy(model)
+OrderedDict([('recall@10', 0.194), ('precision@10', 0.0194), ('gauc', 0.9092), ('mrr@10', 0.0889), ('ndcg@10', 0.1136), ('hit@10', 0.194), ('map@10', 0.0889), ('averagepopularity@10', 2974.8106), ('giniindex@10', 0.9934), ('shannonentropy@10', 0.1484)])
+
+=============== DMF ===============
+Fit ->  638.2905564308167 Predict ->  8.928970098495483
+    35   1268.3 MiB   1268.3 MiB           1           @profile
+    36                                                 def foo():
+    37   1312.6 MiB     44.2 MiB           1               a = copy.deepcopy(model)
+OrderedDict([('recall@10', 0.219), ('precision@10', 0.0219), ('gauc', 0.8621), ('mrr@10', 0.093), ('ndcg@10', 0.122), ('hit@10', 0.219), ('map@10', 0.093), ('averagepopularity@10', 2849.2641), ('giniindex@10', 0.9934), ('shannonentropy@10', 0.0993)])
+
+=============== SpectralCF ===============
+Fit ->  359.5555520057678 Predict ->  7.174392938613892
+    35   1356.6 MiB   1356.6 MiB           1           @profile
+    36                                                 def foo():
+    37   1515.0 MiB    158.4 MiB           1               a = copy.deepcopy(model)
+OrderedDict([('recall@10', 0.2125), ('precision@10', 0.0212), ('gauc', 0.9083), ('mrr@10', 0.0923), ('ndcg@10', 0.1205), ('hit@10', 0.2125), ('map@10', 0.0923), ('averagepopularity@10', 2955.6274), ('giniindex@10', 0.9933), ('shannonentropy@10', 0.1501)])
+
+=============== LightGCN ===============
+Fit ->  747.051066160202 Predict ->  8.182496309280396
+    35   1389.8 MiB   1389.8 MiB           1           @profile
+    36                                                 def foo():
+    37   1389.8 MiB      0.0 MiB           1               a = copy.deepcopy(model)
+OrderedDict([('recall@10', 0.1118), ('precision@10', 0.0112), ('gauc', 0.6347), ('mrr@10', 0.0478), ('ndcg@10', 0.0627), ('hit@10', 0.112), ('map@10', 0.0477), ('averagepopularity@10', 836.7153), ('giniindex@10', 0.8998), ('shannonentropy@10', 0.0087)])
+
+=============== MultiVAE ===============
+Fit ->  305.98800802230835 Predict ->  10.240167379379272
+    35   1515.4 MiB   1515.4 MiB           1           @profile
+    36                                                 def foo():
+    37   1515.4 MiB      0.0 MiB           1               a = copy.deepcopy(model)
+OrderedDict([('recall@10', 0.3147), ('precision@10', 0.0315), ('gauc', 0.9145), ('mrr@10', 0.1254), ('ndcg@10', 0.1695), ('hit@10', 0.3148), ('map@10', 0.1254), ('averagepopularity@10', 1896.7606), ('giniindex@10', 0.9568), ('shannonentropy@10', 0.0061)])
+
+=============== CDAE ===============
+Fit ->  97.48110628128052 Predict ->  9.60559868812561
+    35   1505.8 MiB   1505.8 MiB           1           @profile
+    36                                                 def foo():
+    37   1505.8 MiB      0.0 MiB           1               a = copy.deepcopy(model)
+OrderedDict([('recall@10', 0.2118), ('precision@10', 0.0212), ('gauc', 0.7857), ('mrr@10', 0.0934), ('ndcg@10', 0.1213), ('hit@10', 0.2118), ('map@10', 0.0934), ('averagepopularity@10', 2884.8996), ('giniindex@10', 0.9933), ('shannonentropy@10', 0.1631)])
+
+=============== RaCT ===============
+Fit ->  383.23775482177734 Predict ->  11.1796989440917971
+    35   1514.7 MiB   1514.7 MiB           1           @profile
+    36                                                 def foo():
+    37   1514.7 MiB      0.0 MiB           1               a = copy.deepcopy(model)
+OrderedDict([('recall@10', 0.3191), ('precision@10', 0.0319), ('gauc', 0.9131), ('mrr@10', 0.1247), ('ndcg@10', 0.1701), ('hit@10', 0.3192), ('map@10', 0.1246), ('averagepopularity@10', 1918.3159), ('giniindex@10', 0.9552), ('shannonentropy@10', 0.0061)])
+
+=============== DiffRec ===============
+Fit ->  463.0819606781006 Predict ->  23.453839540481567
+    35   1408.8 MiB   1408.8 MiB           1           @profile
+    36                                                 def foo():
+    37   1408.8 MiB      0.0 MiB           1               a = copy.deepcopy(model)
+OrderedDict([('recall@10', 0.2314), ('precision@10', 0.0232), ('gauc', 0.7578), ('mrr@10', 0.101), ('ndcg@10', 0.1316), ('hit@10', 0.2315), ('map@10', 0.101), ('averagepopularity@10', 2291.9532), ('giniindex@10', 0.9704), ('shannonentropy@10', 0.0096)])
+
+
+=================SLIMElastic=================
+Fit ->  2.9140331745147705 Predict ->  8.385401964187622
+    55    718.8 MiB    718.8 MiB           1       @profile
+    56                                             def foo():
+    57    736.9 MiB     18.0 MiB           1           a = copy.deepcopy(model)
+OrderedDict([('recall@10', 0.0035), ('precision@10', 0.0004), ('gauc', 0.5), ('mrr@10', 0.0012), ('ndcg@10', 0.0017), ('hit@10', 0.0035), ('map@10', 0.0012), ('averagepopularity@10', 106.5594), ('giniindex@10', 0.9935), ('shannonentropy@10', 0.1921)])
+
+=================ItemKNN=================
+Fit ->  7.089728593826294 Predict ->  7.918956518173218
+    55   1146.1 MiB   1146.1 MiB           1       @profile
+    56                                             def foo():
+    57   1224.0 MiB     77.9 MiB           1           a = copy.deepcopy(model)
+
+
+OrderedDict([('recall@10', 0.1719), ('precision@10', 0.0172), ('gauc', 0.7414), ('mrr@10', 0.0728), ('ndcg@10', 0.0958), ('hit@10', 0.172), ('map@10', 0.0728), ('averagepopularity@10', 316.1965), ('giniindex@10', 0.8754), ('shannonentropy@10', 0.0093)])
+
+
+
+
+
+1 million
+
+LightGCN
+-------------------------------
+recall@10 : 0.1545    precision@10 : 0.1664    gauc : 0.9239    mrr@10 : 0.39    ndcg@10 : 0.214    hit@10 : 0.7425    map@10 : 0.1119    averagepopularity@10 : 1136.0864    giniindex@10 : 0.8893    shannonentropy@10 : 0.0037
+600мб
+2.8154
+5217.2345
+
+
+MultiVae
+Fit ->  409.6699860095978 Predict ->  4.714817047119141
+Filename: /Users/romankulshin/PycharmProjects/dis/rec/test.py
+
+Line #    Mem usage    Increment  Occurrences   Line Contents
+=============================================================
+    55   1019.1 MiB   1019.1 MiB           1       @profile
+    56                                             def foo():
+    57   1095.3 MiB     76.2 MiB           1           a = copy.deepcopy(model)
+
+
+OrderedDict([('recall@10', 0.1791), ('precision@10', 0.2003), ('gauc', 0.9241), ('mrr@10', 0.4473), ('ndcg@10', 0.2602), ('hit@10', 0.7694), ('map@10', 0.1512), ('averagepopularity@10', 1137.5969), ('giniindex@10', 0.8758), ('shannonentropy@10', 0.0034)])
+
+
+01 Feb 10:40    INFO  Loading model structure and parameters from saved/CDAE-Feb-01-2024_10-32-19.pth
+Fit ->  517.6489160060883 Predict ->  3.051703929901123
+Filename: /Users/romankulshin/PycharmProjects/dis/rec/test.py
+
+Line #    Mem usage    Increment  Occurrences   Line Contents
+=============================================================
+    55   1215.4 MiB   1215.4 MiB           1       @profile
+    56                                             def foo():
+    57   1258.1 MiB     42.7 MiB           1           a = copy.deepcopy(model)
+
+
+OrderedDict([('recall@10', 0.1474), ('precision@10', 0.1922), ('gauc', 0.9124), ('mrr@10', 0.4354), ('ndcg@10', 0.2432), ('hit@10', 0.7101), ('map@10', 0.1431), ('averagepopularity@10', 1511.7335), ('giniindex@10', 0.9536), ('shannonentropy@10', 0.0055)])
+
+
+
+01 Feb 11:02    INFO  Loading model structure and parameters from saved/RaCT-Feb-01-2024_10-53-42.pth
+Fit ->  556.0438618659973 Predict ->  4.9148571491241455
+Filename: /Users/romankulshin/PycharmProjects/dis/rec/test.py
+
+Line #    Mem usage    Increment  Occurrences   Line Contents
+=============================================================
+    55   1122.5 MiB   1122.5 MiB           1       @profile
+    56                                             def foo():
+    57   1188.0 MiB     65.5 MiB           1           a = copy.deepcopy(model)
+
+
+OrderedDict([('recall@10', 0.175), ('precision@10', 0.1955), ('gauc', 0.9236), ('mrr@10', 0.433), ('ndcg@10', 0.2523), ('hit@10', 0.7627), ('map@10', 0.1449), ('averagepopularity@10', 1128.3388), ('giniindex@10', 0.8746), ('shannonentropy@10', 0.0033)])
+
+
+01 Feb 11:14    INFO  Loading model structure and parameters from saved/DiffRec-Feb-01-2024_11-06-09.pth
+Fit ->  500.80884194374084 Predict ->  7.739053964614868
+Filename: /Users/romankulshin/PycharmProjects/dis/rec/test.py
+
+Line #    Mem usage    Increment  Occurrences   Line Contents
+=============================================================
+    55    797.2 MiB    797.2 MiB           1       @profile
+    56                                             def foo():
+    57    915.1 MiB    117.8 MiB           1           a = copy.deepcopy(model)
+
+
+OrderedDict([('recall@10', 0.2001), ('precision@10', 0.2318), ('gauc', 0.9167), ('mrr@10', 0.5107), ('ndcg@10', 0.3032), ('hit@10', 0.806), ('map@10', 0.1858), ('averagepopularity@10', 1277.6237), ('giniindex@10', 0.9218), ('shannonentropy@10', 0.0053)])
+
+
+
+ItemKNN
+Fit ->  9.702240943908691 Predict ->  4.582769155502319
+Filename: /Users/romankulshin/PycharmProjects/dis/rec/test.py
+
+Line #    Mem usage    Increment  Occurrences   Line Contents
+=============================================================
+    55   1739.1 MiB   1739.1 MiB           1       @profile
+    56                                             def foo():
+    57   1846.3 MiB    107.2 MiB           1           a = copy.deepcopy(model)
+
+
+OrderedDict([('recall@10', 0.1634), ('precision@10', 0.1986), ('gauc', 0.9169), ('mrr@10', 0.4467), ('ndcg@10', 0.2563), ('hit@10', 0.7424), ('map@10', 0.1524), ('averagepopularity@10', 1201.2394), ('giniindex@10', 0.9176), ('shannonentropy@10', 0.0045)])
+
+
+
+Slimelastic
+Fit ->  6.819368839263916 Predict ->  5.3793230056762695
+Filename: /Users/romankulshin/PycharmProjects/dis/rec/test.py
+
+Line #    Mem usage    Increment  Occurrences   Line Contents
+=============================================================
+    55    916.7 MiB    916.7 MiB           1       @profile
+    56                                             def foo():
+    57    922.5 MiB      5.8 MiB           1           a = copy.deepcopy(model)
+
+
+OrderedDict([('recall@10', 0.1925), ('precision@10', 0.2254), ('gauc', 0.9085), ('mrr@10', 0.5027), ('ndcg@10', 0.2958), ('hit@10', 0.7907), ('map@10', 0.182), ('averagepopularity@10', 1421.5015), ('giniindex@10', 0.9505), ('shannonentropy@10', 0.0068)])

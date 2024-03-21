@@ -1,63 +1,65 @@
+import os
 import time
 from logging import getLogger
 
-from memory_profiler import profile
+from memory_profiler import memory_usage
 from recbole.config import Config
 from recbole.data import create_dataset, data_preparation
-from recbole.model.general_recommender import BPR, LINE, NeuMF, ConvNCF, DMF, ItemKNN, NAIS, SpectralCF, GCMC, LightGCN, \
-    DGCF, MultiVAE, MacridVAE, CDAE, RaCT, RecVAE, EASE, SLIMElastic, NCL, DiffRec
+from recbole.model.general_recommender import ItemKNN
 from recbole.trainer import Trainer
 from recbole.utils import init_seed, init_logger
 import copy
 
+from united_metric_of_recommender_systen.composite.composite_index import CompositeIndex
+from united_metric_of_recommender_systen.composite.data_weight import DatasetWeight
+
+# K 1 - 1000 step 10
+# SHRINK - 0 - 1 step 0.01
+
 if __name__ == '__main__':
+    scores = []
+
     parameter_dict = {
-        'metrics': ['Recall', 'Precision', 'GAUC', 'MRR', 'NDCG', 'Hit', 'MAP',  'AveragePopularity', 'GiniIndex', 'ShannonEntropy'],
-        'epochs':1
+        'metrics': ['Recall', 'Precision', 'GAUC', 'MRR', 'NDCG', 'Hit', 'MAP', 'AveragePopularity',
+                    'GiniIndex', 'ShannonEntropy'],
+        'epochs': 1,
+        'k': 112,
+        'shrink': 0.45,
+
     }
-    # configurations initialization
-    config = Config(model='SLIMElastic', dataset='ml-100k', config_dict=parameter_dict)
-
-
-    # init random seed
+    config = Config(model='ItemKNN', dataset='ml-100k', config_dict=parameter_dict)
     init_seed(config['seed'], config['reproducibility'])
 
-    # logger initialization
     init_logger(config)
     logger = getLogger()
 
-    # write config info into log
     logger.info(config)
 
-    # dataset creating and filtering
     dataset = create_dataset(config)
     logger.info(dataset)
 
-    # dataset splitting
     train_data, valid_data, test_data = data_preparation(config, dataset)
 
-    # model loading and initialization
-    model = SLIMElastic(config, train_data.dataset).to(config['device'])
-    logger.info(model)
+    model = ItemKNN(config, train_data.dataset).to(config['device'])
 
-    # trainer loading and initialization
     trainer = Trainer(config, model)
 
-
     t_s = time.time()
-    # model training
     best_valid_score, best_valid_result = trainer.fit(train_data, valid_data)
     t_f = time.time()
     test_result = trainer.evaluate(test_data)
     t_e = time.time()
-    print("Fit -> ", t_f-t_s, "Predict -> ", t_e-t_f)
 
-    model.predict([[1],[1,3]])
-
-    @profile
     def foo():
         a = copy.deepcopy(model)
     foo()
 
-    print(test_result)
+    os.remove(trainer.saved_model_file)
+    usage = memory_usage(foo)
+    params = list(test_result.values())
+    params.insert(0, t_e - t_f)
+    params.insert(0, t_f - t_s)
+    params.insert(0, usage[0])
+
+    print(CompositeIndex(params, DatasetWeight.ML100K).run())
 
