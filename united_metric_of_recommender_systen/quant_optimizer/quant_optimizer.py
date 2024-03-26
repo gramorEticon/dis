@@ -2,7 +2,7 @@ import math
 import random
 from typing import List
 
-from recbole.model.general_recommender import ItemKNN
+from recbole.model.general_recommender import ItemKNN, LINE
 
 from united_metric_of_recommender_systen.runner.runner import Runner
 
@@ -13,7 +13,8 @@ class QuantOptimizer:
         self.count_dots: int = count_dots if count_dots % 2 == 0 else count_dots + 1
         self.odz: List = odz
         self.count_iteration: int = count_iteration
-        self.rec = Runner(ItemKNN, "ml-100k", is_logging=False)
+        self.rec = Runner(LINE, "ml-100k", is_logging=False)
+        self.cout = 0
         self.__pool()
 
     def __pool(self) -> None:
@@ -32,7 +33,10 @@ class QuantOptimizer:
 
     def __f(self, x):
         #return math.cos(x[0] / 25) + math.sin(x[1] / 25) + 0.03 * x[1] + 0.03 * x[0]
-        return -x[0]**2 - x[1]**2
+        self.cout += 1
+        print(self.cout)
+        return self.rec.loop(x[0], x[1], x[2]/100)
+       # return self.rec.loop(100, 2, 1)
 
     def __interation(self):
         for _ in range(0, self.count_iteration):
@@ -67,5 +71,5 @@ class QuantOptimizer:
                 bst = elem[0:-1]
         print(bst, mx)
 
-
-QuantOptimizer(10, [[-10, 10, True], [-10, 10, False]],)
+if __name__ == "__main__":
+    QuantOptimizer(30, [[32, 512, True], [1, 2, True], [0, 100, False]],)

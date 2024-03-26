@@ -51,25 +51,25 @@ class Runner:
         self.train_data, self.valid_data, self.test_data = data_preparation(self.config, self.dataset)
 
     def __create_model(self):  # mutable
-        self.model = ItemKNN(self.config, self.train_data.dataset).to(self.config['device'])
+        self.model = LINE(self.config, self.train_data.dataset).to(self.config['device'])
 
     def __create_trainer(self):  # mutable
         self.trainer = Trainer(self.config, self.model)
 
-    def __set_config(self, k=100, shrink=0):  # mutable
+    def __set_config(self, k=100, shrink=2, s=1.0):  # mutable
         parameter_dict = {
             'metrics': ['Recall', 'Precision', 'GAUC', 'MRR', 'NDCG', 'Hit', 'MAP', 'AveragePopularity', 'GiniIndex',
                         'ShannonEntropy'],
             'epochs': 1,
-            'k': k,
-            'shrink': shrink,
+            'embedding_size': k,
+            'order': shrink,
+            'second_order_loss_weight': s
 
         }
-        self.config = Config(model='ItemKNN', dataset=self.dataset_name, config_dict=parameter_dict)
+        self.config = Config(model="LINE", dataset=self.dataset_name, config_dict=parameter_dict)
 
-    def loop(self, k, shrink):
-        t = time.time()
-        self.__set_config(k=k, shrink=shrink)
+    def loop(self, k, shrink, s):
+        self.__set_config(k=k, shrink=shrink, s=s)
         self.__create_model()
         self.__create_trainer()
         t_s = time.time()

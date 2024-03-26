@@ -5,7 +5,7 @@ from logging import getLogger
 from memory_profiler import memory_usage
 from recbole.config import Config
 from recbole.data import create_dataset, data_preparation
-from recbole.model.general_recommender import ItemKNN
+from recbole.model.general_recommender import ItemKNN, LINE
 from recbole.trainer import Trainer
 from recbole.utils import init_seed, init_logger
 import copy
@@ -23,11 +23,12 @@ if __name__ == '__main__':
         'metrics': ['Recall', 'Precision', 'GAUC', 'MRR', 'NDCG', 'Hit', 'MAP', 'AveragePopularity',
                     'GiniIndex', 'ShannonEntropy'],
         'epochs': 1,
-        'k': 112,
-        'shrink': 0.45,
+            'embedding_size': 50,
+            'order': 2,
+            'second_order_loss_weight': 1
 
     }
-    config = Config(model='ItemKNN', dataset='ml-100k', config_dict=parameter_dict)
+    config = Config(model='LINE', dataset='ml-100k', config_dict=parameter_dict)
     init_seed(config['seed'], config['reproducibility'])
 
     init_logger(config)
@@ -40,7 +41,7 @@ if __name__ == '__main__':
 
     train_data, valid_data, test_data = data_preparation(config, dataset)
 
-    model = ItemKNN(config, train_data.dataset).to(config['device'])
+    model = LINE(config, train_data.dataset).to(config['device'])
 
     trainer = Trainer(config, model)
 
