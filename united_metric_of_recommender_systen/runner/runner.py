@@ -56,11 +56,11 @@ class Runner:
     def __create_trainer(self):  # mutable
         self.trainer = Trainer(self.config, self.model)
 
-    def __set_config(self, k=100, shrink=2, s=1.0):  # mutable
+    def __set_config(self, k=100, shrink=2, s=1.0,e=1):  # mutable
         parameter_dict = {
             'metrics': ['Recall', 'Precision', 'GAUC', 'MRR', 'NDCG', 'Hit', 'MAP', 'AveragePopularity', 'GiniIndex',
                         'ShannonEntropy'],
-            'epochs': 1,
+            'epochs': e,
             'embedding_size': k,
             'order': shrink,
             'second_order_loss_weight': s
@@ -68,8 +68,8 @@ class Runner:
         }
         self.config = Config(model="LINE", dataset=self.dataset_name, config_dict=parameter_dict)
 
-    def loop(self, k, shrink, s):
-        self.__set_config(k=k, shrink=shrink, s=s)
+    def loop(self, k, shrink, s,e):
+        self.__set_config(k=k, shrink=shrink, s=s,e=e)
         self.__create_model()
         self.__create_trainer()
         t_s = time.time()

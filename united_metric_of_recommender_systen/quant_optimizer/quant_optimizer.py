@@ -35,7 +35,7 @@ class QuantOptimizer:
         #return math.cos(x[0] / 25) + math.sin(x[1] / 25) + 0.03 * x[1] + 0.03 * x[0]
         self.cout += 1
         print(self.cout)
-        return self.rec.loop(x[0], x[1], x[2]/100)
+        return self.rec.loop(x[0], x[1], x[2]/100, x[3])
        # return self.rec.loop(100, 2, 1)
 
     def __interation(self):
@@ -71,5 +71,4 @@ class QuantOptimizer:
                 bst = elem[0:-1]
         print(bst, mx)
 
-if __name__ == "__main__":
-    QuantOptimizer(30, [[32, 512, True], [1, 2, True], [0, 100, False]],)
+

@@ -22,10 +22,10 @@ if __name__ == '__main__':
     parameter_dict = {
         'metrics': ['Recall', 'Precision', 'GAUC', 'MRR', 'NDCG', 'Hit', 'MAP', 'AveragePopularity',
                     'GiniIndex', 'ShannonEntropy'],
-        'epochs': 1,
-            'embedding_size': 50,
-            'order': 2,
-            'second_order_loss_weight': 1
+        'epochs': 10,
+        'embedding_size': 128,
+        'order': 1,
+        'second_order_loss_weight': 1
 
     }
     config = Config(model='LINE', dataset='ml-100k', config_dict=parameter_dict)
@@ -61,6 +61,7 @@ if __name__ == '__main__':
     params.insert(0, t_e - t_f)
     params.insert(0, t_f - t_s)
     params.insert(0, usage[0])
+    print(params)
 
     print(CompositeIndex(params, DatasetWeight.ML100K).run())
 
