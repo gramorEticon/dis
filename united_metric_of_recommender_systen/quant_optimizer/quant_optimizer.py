@@ -30,13 +30,17 @@ class QuantOptimizer:
             temp.append(self.__f(temp))
             self.dots.append(temp)
 
-
     def __f(self, x):
-        #return math.cos(x[0] / 25) + math.sin(x[1] / 25) + 0.03 * x[1] + 0.03 * x[0]
         self.cout += 1
         print(self.cout)
-        return self.rec.loop(x[0], x[1], x[2]/100, x[3])
-       # return self.rec.loop(100, 2, 1)
+        rules = {
+            'epochs': x[3],
+            'embedding_size': x[0],
+            'order': x[1],
+            'second_order_loss_weight': x[2]
+        }
+
+        return self.rec.loop(rules)
 
     def __interation(self):
         for _ in range(0, self.count_iteration):
@@ -70,5 +74,3 @@ class QuantOptimizer:
                 mx = elem[-1]
                 bst = elem[0:-1]
         print(bst, mx)
-
-

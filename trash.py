@@ -1,16 +1,10 @@
-import random
+a = {
+    'Keks1': "lol"
+}
 
-from recbole.model.general_recommender import ItemKNN
+b = {
+    'Keks2': "Azaza"
+}
 
-a = ItemKNN
-
-print(str(a).split(".")[-1].split("'")[0])
-
-print(random.randint(1,2))
-print(random.randint(1,2))
-print(random.randint(1,2))
-print(random.randint(1,2))
-print(random.randint(1,2))
-print(random.randint(1,2))
-print(random.randint(1,2))
-
+a.update(b)
+print(a)

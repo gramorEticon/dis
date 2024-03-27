@@ -24,11 +24,12 @@ class Runner:
         self.dataset = None
         self.trainer = None
         self.train_data, self.valid_data, self.test_data = None, None, None
-        self.name_model = str(self.model).split(".")[-1].split("'")[0]
+        self.name_model = str(self.alg).split(".")[-1].split("'")[0]
+        print(self.name_model)
         self.__pool()
 
     def __pool(self):
-        self.__set_config()
+        self.__set_config({})
         if self.is_logging:
             self.__start_logger()
         self.__write_log(self.config)
@@ -51,25 +52,21 @@ class Runner:
         self.train_data, self.valid_data, self.test_data = data_preparation(self.config, self.dataset)
 
     def __create_model(self):  # mutable
-        self.model = LINE(self.config, self.train_data.dataset).to(self.config['device'])
+        self.model = self.alg(self.config, self.train_data.dataset).to(self.config['device'])
 
     def __create_trainer(self):  # mutable
         self.trainer = Trainer(self.config, self.model)
 
-    def __set_config(self, k=100, shrink=2, s=1.0,e=1):  # mutable
+    def __set_config(self, rules):  # mutable
         parameter_dict = {
             'metrics': ['Recall', 'Precision', 'GAUC', 'MRR', 'NDCG', 'Hit', 'MAP', 'AveragePopularity', 'GiniIndex',
                         'ShannonEntropy'],
-            'epochs': e,
-            'embedding_size': k,
-            'order': shrink,
-            'second_order_loss_weight': s
-
         }
-        self.config = Config(model="LINE", dataset=self.dataset_name, config_dict=parameter_dict)
+        parameter_dict.update(rules)
+        self.config = Config(model=self.name_model, dataset=self.dataset_name, config_dict=parameter_dict)
 
-    def loop(self, k, shrink, s,e):
-        self.__set_config(k=k, shrink=shrink, s=s,e=e)
+    def loop(self, rules):
+        self.__set_config(rules)
         self.__create_model()
         self.__create_trainer()
         t_s = time.time()
@@ -77,14 +74,13 @@ class Runner:
         t_f = time.time()
         test_result = self.trainer.evaluate(self.test_data)
         t_e = time.time()
+
         def foo():
             a = copy.deepcopy(self.model)
+
         usage = memory_usage(foo)
         params = list(test_result.values())
         params.insert(0, t_e - t_f)
         params.insert(0, t_f - t_s)
         params.insert(0, usage[0])
         return CompositeIndex(params, DatasetWeight.ML100K).run()
-
-
-

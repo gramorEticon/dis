@@ -15,6 +15,7 @@ from united_metric_of_recommender_systen.composite.data_weight import DatasetWei
 
 # K 1 - 1000 step 10
 # SHRINK - 0 - 1 step 0.01
+#[349, 2, 48.5, 17] 0.5966847085011683
 
 if __name__ == '__main__':
     scores = []
@@ -22,10 +23,10 @@ if __name__ == '__main__':
     parameter_dict = {
         'metrics': ['Recall', 'Precision', 'GAUC', 'MRR', 'NDCG', 'Hit', 'MAP', 'AveragePopularity',
                     'GiniIndex', 'ShannonEntropy'],
-        'epochs': 10,
-        'embedding_size': 128,
-        'order': 1,
-        'second_order_loss_weight': 1
+        'epochs': 25,
+        'embedding_size': 349,
+        'order': 2,
+        'second_order_loss_weight': 0.485
 
     }
     config = Config(model='LINE', dataset='ml-100k', config_dict=parameter_dict)
