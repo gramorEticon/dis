@@ -1,5 +1,6 @@
 import math
 import random
+import time
 from typing import List
 
 from recbole.model.general_recommender import ItemKNN, LINE
@@ -13,8 +14,10 @@ class QuantOptimizer:
         self.count_dots: int = count_dots if count_dots % 2 == 0 else count_dots + 1
         self.odz: List = odz
         self.count_iteration: int = count_iteration
-        self.rec = Runner(LINE, "ml-100k", is_logging=False)
-        self.cout = 0
+        self.rec = Runner(ItemKNN, "ml-100k", is_logging=False)
+        self.count = 0
+        self.range = count_dots + (count_iteration * (count_dots/2))
+        self.t = None
         self.__pool()
 
     def __pool(self) -> None:
@@ -28,18 +31,23 @@ class QuantOptimizer:
             for j in range(0, len(self.odz)):
                 temp.append(random.randint(self.odz[j][0], self.odz[j][1]))
             temp.append(self.__f(temp))
+            print(temp[-1])
             self.dots.append(temp)
 
     def __f(self, x):
-        self.cout += 1
-        print(self.cout)
-        rules = {
-            'epochs': x[3],
-            'embedding_size': x[0],
-            'order': x[1],
-            'second_order_loss_weight': x[2]
-        }
+        if self.t is None:
+            self.t = time.time()
+        else:
+            if self.count == 1:
+                temp = ((time.time() - self.t) * self.range) * 1.1
+                print("Примерно осталось:",temp//60, "мин.", temp % 60, "сек.")
+        self.count += 1
 
+        rules = {
+            'epochs': 1,
+            'k': x[0],
+            'shrink': x[1]/1000,
+        }
         return self.rec.loop(rules)
 
     def __interation(self):
@@ -63,7 +71,6 @@ class QuantOptimizer:
                 new_dots.append(a)
                 new_dots.append(b)
             self.dots = new_dots
-            print(self.dots)
             random.shuffle(self.dots)
 
     def __find_min(self):

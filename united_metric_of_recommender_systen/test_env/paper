@@ -1,0 +1,26 @@
+Rich, E. (1979). User modeling via stereotypes. Cognitive science, 3(4), 329-354.
+Resnick, P., Iacovou, N., Suchak, M., Bergström, P., Riedl,J. (1994). GroupLens: an open architecture for collaborative filtering of netnews. Proceedings of the 1994 ACM conference on Computer supported cooperative work, pp. 175-186.
+Karlgren, J. (1990). An algebra for recommendations: Using reader data as a basis for measuring document proximity.
+Karlgen, J. (1994). Newsgroup Clustering Based on User Behavior-A Recommendation Algebra. SICS Research Report.
+Herlocker, J. L., Konstan, J. A., Terveen, L. G., & Riedl, J. T. (2004). Evaluating collaborative filtering recommender systems. ACM Transactions on Information Systems (TOIS), 22(1), 5-53.
+Bi, X., Qu, A., Shen, X. (2018). Multilayer tensor factorization with applications to recommender systems. Annals of Statistics.
+Koren, Y., Bell, R., Volinsky, C. (2009). Matrix factorization techniques for recommender systems. Computer, 42(8), 30-37.
+Kulshin, R. S., Sidorov, A. A., Senchenko, P. V. (2022). Using neural networks with reinforcement in the tasks of forming user recommendations. In Journal of Physics: Conference Series (Vol. 2291, No. 1, p. 012005). IOP Publishing.
+Cunha, T., Soares, C., de Carvalho, A. C. (2018). CF4CF: recommending collaborative filtering algorithms using collaborative filtering. In Proceedings of the 12th ACM Conference on Recommender Systems (pp. 357-361).
+Salaria, S., Drozd, A., Podobas, A., Matsuoka, S. (2018). Predicting performance using collaborative filtering. In 2018 IEEE International Conference on Cluster Computing (CLUSTER) (pp. 504-514). IEEE.
+Pradhan, R., Swami, A. C., Saxena, A., Rajpoot, V. (2021). A Study on Movie Recommendations using Collaborative Filtering. In IOP Conference Series: Materials Science and Engineering (Vol. 1119, No. 1, p. 012018). IOP Publishing.
+Guo, Q., Zhang, C. (2011). Image Interpolation using Collaborative Filtering. International Journal of Digital Content Technology and its Applications, 5(4), 12-17.
+Apriliana, R. A., Hidayatullah, F. A., Hamzah, A. (2020). Recommending Tourism Destination using Collaborative Filtering. In IOP Conference Series: Materials Science and Engineering (Vol. 803, No. 1, p. 012032). IOP Publishing.
+He, X., Liao, L., Zhang, H., Nie, L., Hu, X., Chua, T. S. (2017). Neural collaborative filtering. In Proceedings of the 26th international conference on world wide web (pp. 173-182).
+Althbiti, A., Ma, X. (2022). Collaborative Filtering. In Encyclopedia of Big Data (pp. 179-182). Cham: Springer International Publishing.
+Frisch, G., Leger, J. B., Grandvalet, Y. (2021). Stereotype-aware collaborative filtering. In 2021 16th Conference on Computer Science and Intelligence Systems (FedCSIS) (pp. 69-79). IEEE.
+İldere, S. (2019). Collaborative filtering system. In 2019 4th International Conference on Computer Science and Engineering (UBMK) (pp. 624-628). IEEE.
+Papadakis, H., Papagrigoriou, A., Panagiotakis, C., Kosmas, E., Fragopoulou, P. (2022). Collaborative filtering recommender systems taxonomy. Knowledge and Information Systems, 64(1), 35-74.
+Su, X., Khoshgoftaar, T. M. (2009). A survey of collaborative filtering techniques. Advances in artificial intelligence, 2009(1), 421425.
+Pandove, D., Malhi, A. (2021). A correlation based recommendation system for large data sets. Journal of Grid Computing, 19(4), 42.
+Bookstein, A., Kulyukin, V. A., & Raita, T. (2002). Generalized hamming distance. Information Retrieval, 5, 353-375.
+Pradeep, I. K., Bhaskar, M. J. (2018). Comparative analysis of recommender systems and its enhancements. International Journal of Engineering & Technology, 7(3.29), 304-310.
+Salton, G., Wong, A., Yang, C. S. (1975). A vector space model for automatic indexing. Communications of the ACM, 18(11), 613-620.
+Hyndman, R. J., Koehler, A. B. (2006). Another look at measures of forecast accuracy. International journal of forecasting, 22(4), 679-688.
+Willmott, C. J., Matsuura, K. (2005). Advantages of the mean absolute error (MAE) over the root mean square error (RMSE) in assessing average model performance. Climate research, 30(1), 79-82.
+Wilkinson, L., & Friendly, M. (2009). The history of the cluster heat map. The American Statistician, 63(2), 179-184.
