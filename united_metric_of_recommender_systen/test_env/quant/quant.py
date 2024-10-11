@@ -104,15 +104,19 @@ import matplotlib.pyplot as plt
 #      [0.5730842547303922, 0.571480641348073, 0.5675304012555017, 0.5726099530062922, 0.5730842009073814,
 #       0.5695350865821514, 0.5732708953720558, 0.5743855389621434, 0.5689366023199947, 0.5753049125761858]]
 
-"50 / 10"
+from math import cos
+
+
 # print(len(a), len(a[1]))
 _mx = 0
 data = []
 for i in range(0,199,1):
     loc = []
     for j in range(0, 199,1):
-        loc.append(math.cos(i/25) + math.sin(j/25) + 0.03 *j + 0.03*i)
-        #loc.append(i**2-i*j+j**2)
+        i_=i-100
+        j_=j-100
+        loc.append(math.cos(i_/10) + math.sin(j_/10) - abs(i_/50) - abs(j_/50))
+
         if loc[-1] > _mx:
             _mx = loc[-1]
     data.append(loc)
@@ -120,10 +124,10 @@ for i in range(0,199,1):
 
 
 dots = []
-
-# for i in range(0, 30):
+#
+# for i in range(0, 36):
 #     dots.append([random.randint(0, 199), random.randint(0, 199)])
-for i in range(0,1):
+for i in range(0,2):
     dots.append([0, random.randint(0,198)])
     dots.append([random.randint(0,198), 0])
     dots.append([198, random.randint(0,198)])
@@ -135,11 +139,14 @@ dots.append([198,198])
 
 plt.imshow(data, cmap='bone', interpolation='nearest')
 plt.scatter([dot[1] for dot in dots], [dot[0] for dot in dots], edgecolors="red")
-plt.show()
-
+plt.savefig(f"save/0.png")
+plt.clf()
 # ---
-for i in range(0, 30, 1):
+
+for l in range(0, 100, 1):
     alt_dots = []
+    step = 0
+    dist=0
     for i in range(0, len(dots), 2):
         a = dots[i]
         b = dots[i+1]
@@ -147,17 +154,34 @@ for i in range(0, 30, 1):
         # print("------")
         # print(a,b)
         if data[c[0]][c[1]] >= data[a[0]][a[1]]:
+            step+=1
+            dist += math.dist(a, c)
             a = c
+
+
         else:
             if data[c[0]][c[1]] >= data[b[0]][b[1]]:
+                step += 1
+                dist += math.dist(b, c)
                 b = c
+
         alt_dots.append(a)
         alt_dots.append(b)
+
+    if step == 0:
+        break
+    if dist/step < 1:
+        break
+
+    print("Dist", dist / step)
 
     plt.imshow(data, cmap='bone', interpolation='nearest')
     # plt.scatter([dot[1] for dot in dots], [dot[0] for dot in dots])
     plt.scatter([dot[1] for dot in alt_dots], [dot[0] for dot in alt_dots],  edgecolors="red")
-    plt.show()
+    plt.savefig(f"save/{l+1}.png")
+    # if l % 2 != 0:
+    #     plt.clf()
+    plt.clf()
     dots = alt_dots
     random.shuffle(dots)
 

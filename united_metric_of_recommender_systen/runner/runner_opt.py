@@ -64,7 +64,7 @@ class RunnerOpt:
         parameter_dict.update(rules)
         self.config = Config(model=self.name_model, dataset=self.dataset_name, config_dict=parameter_dict)
 
-    def loop(self, rules):
+    def loop(self, rules, pos=-1):
         self.__set_config(rules)
         self.__create_model()
         self.__create_trainer()
@@ -72,7 +72,6 @@ class RunnerOpt:
         self.trainer.fit(self.train_data, self.valid_data)
         t_f = time.time()
         test_result = self.trainer.evaluate(self.test_data)
-        self.trainer
         t_e = time.time()
 
         def foo():
@@ -83,5 +82,9 @@ class RunnerOpt:
         params.insert(0, t_e - t_f)
         params.insert(0, t_f - t_s)
         params.insert(0, usage[0])
+
         os.remove(self.trainer.saved_model_file)
-        return CompositeIndex(params, DatasetWeight.ML100K).run()
+        if pos == -1:
+            return CompositeIndex(params, DatasetWeight.ML100K).run()
+        else:
+            return params[pos]
